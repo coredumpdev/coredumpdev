@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="214" viewBox="0 0 840 214" role="img" aria-label="Terminal: kernel-log styled lines about current work, ending with ./coredumpdev — Segmentation fault (core dumped).">
+  <defs>
+    <style>.m { font-family: ui-monospace, &quot;SF Mono&quot;, SFMono-Regular, Menlo, Consolas, &quot;Liberation Mono&quot;, monospace; font-size: 13px; }</style>
+  </defs>
+  <rect x="0.5" y="0.5" width="839" height="213" rx="10" fill="#0d1117" stroke="#30363d"/>
+  <path d="M0.5 10.5a10 10 0 0 1 10-10h819a10 10 0 0 1 10 10V36H0.5z" fill="#161b22" stroke="#30363d"/>
+  <circle cx="22" cy="18" r="5.5" fill="#ff5f56"/>
+  <circle cx="41" cy="18" r="5.5" fill="#ffbd2e"/>
+  <circle cx="60" cy="18" r="5.5" fill="#27c93f"/>
+  <text class="m" x="420" y="22" text-anchor="middle" fill="#7d8590" font-size="11.5">coredumpdev — dmesg</text>
+  <text class="m" x="24" y="64" xml:space="preserve"><tspan fill="#3fb950">$ </tspan><tspan fill="#c9d1d9">dmesg | tail -4</tspan></text>
+  <text class="m" x="24" y="92" font-size="12.5" xml:space="preserve"><tspan fill="#6e7681">[ 2451.881204] </tspan><tspan fill="#39c5cf">photon: </tspan><tspan fill="#8b949e">1e6 points through WebGL2, holding 60fps</tspan><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.1000;0.1900;1" dur="2.0s" begin="0s" fill="freeze"/></text>
+  <text class="m" x="24" y="114" font-size="12.5" xml:space="preserve"><tspan fill="#6e7681">[ 2453.019877] </tspan><tspan fill="#39c5cf">disasm-ai: </tspan><tspan fill="#8b949e">rizin + rz-ghidra under an Electron shell</tspan><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.2100;0.3000;1" dur="2.0s" begin="0s" fill="freeze"/></text>
+  <text class="m" x="24" y="136" font-size="12.5" xml:space="preserve"><tspan fill="#6e7681">[ 2455.442310] </tspan><tspan fill="#39c5cf">kernel: </tspan><tspan fill="#8b949e">reading the Linux tree, one subsystem at a time</tspan><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.3200;0.4100;1" dur="2.0s" begin="0s" fill="freeze"/></text>
+  <text class="m" x="24" y="158" font-size="12.5" xml:space="preserve"><tspan fill="#6e7681">[ 2457.113095] </tspan><tspan fill="#39c5cf">tolga: </tspan><tspan fill="#8b949e">always up for a talk about cache lines and MMUs</tspan><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.4300;0.5200;1" dur="2.0s" begin="0s" fill="freeze"/></text>
+  <text class="m" x="24" y="190" xml:space="preserve"><tspan fill="#3fb950">$ </tspan><tspan fill="#c9d1d9">./coredumpdev</tspan><tspan fill="#ff7b72">   Segmentation fault (core dumped)</tspan><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.6500;0.7400;1" dur="2.0s" begin="0s" fill="freeze"/></text>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="46" viewBox="0 0 840 46" role="img" aria-label="pcap-capture — Packet capture and dissection (C++)">
+  <defs>
+    <style>.m { font-family: ui-monospace, &quot;SF Mono&quot;, SFMono-Regular, Menlo, Consolas, &quot;Liberation Mono&quot;, monospace; font-size: 13px; }</style>
+    <clipPath id="w"><rect x="0" y="0" height="46" width="840"><animate attributeName="width" values="0;0;840;840" keyTimes="0;0.2500;0.5000;1" dur="1.2s" begin="0s" fill="freeze"/></rect></clipPath>
+  </defs>
+  <g clip-path="url(#w)">
+    <rect x="0.5" y="0.5" width="839" height="45" rx="8" fill="#161b22" stroke="#21262d"/>
+    <rect x="1" y="1" width="3.5" height="44" fill="#d29922"/>
+    <text class="m" x="24"  y="29" font-weight="600" fill="#58a6ff">pcap-capture</text>
+    <text class="m" x="252" y="29" font-size="12.5" fill="#8b949e">Packet capture and dissection</text>
+    <text class="m" x="816" y="29" font-size="11.5" fill="#d29922" text-anchor="end">C++</text>
+  </g>
+</svg>
