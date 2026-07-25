@@ -4,7 +4,7 @@
 -->
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/coredumpdev/coredumpdev/main/assets/session.svg" width="840" alt="Terminal session. A hexdump of coredumpdev.core whose ASCII column reads: coredumpdev, Muzaffer Tolga Yakar, Zeta Defence / Kadikoy IST, systems . embedded . reverse-engineering. Below it: Systems and embedded engineer at Zeta Defence. I spend most of my time a few layers below the framework — kernels, bare-metal MCUs, packet paths, and the parts of a program that only make sense in a debugger. Occasionally I surface into userland to make pixels move fast.">
+  <img src="https://raw.githubusercontent.com/coredumpdev/coredumpdev/main/assets/session.svg" width="840" alt="Terminal session. A hexdump of coredumpdev.core whose ASCII column reads: coredumpdev, Muzaffer Tolga Yakar, Software Engineer @ Zeta Defence, Kadikoy, Istanbul. Below it: Software engineer at Zeta Defence. I gravitate to the layers below the framework: kernels, bare-metal MCUs, packet paths, and the parts of a program that only make sense in a debugger. Occasionally I surface into userland to make pixels move fast.">
 </p>
 
 <p align="center">
@@ -38,7 +38,7 @@
 
 <br>
 
-Zeta Defence'te sistem ve gömülü yazılım mühendisiyim. Vaktimin çoğu framework'lerin birkaç kat altında geçiyor — çekirdekler, bare-metal mikrodenetleyiciler, paket yolları ve bir programın yalnızca debugger içinde anlam kazanan kısımları. Arada userland'e çıkıp piksellerin hızlı akmasını sağlıyorum.
+Zeta Defence'te yazılım mühendisiyim. İlgim framework'lerin birkaç kat altına kayıyor — çekirdekler, bare-metal mikrodenetleyiciler, paket yolları ve bir programın yalnızca debugger içinde anlam kazanan kısımları. Arada userland'e çıkıp piksellerin hızlı akmasını sağlıyorum.
 
 **Öne çıkan işler**
 

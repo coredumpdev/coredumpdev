@@ -70,65 +70,87 @@ def write(name, content):
 
 # ---------------------------------------------------------------- session
 
-HEX = [
-    ("00000000: ", "636f 7265 6475 6d70 6465 7600 0000 0000 ", "coredumpdev....."),
-    ("00000010: ", "4d75 7a61 6666 6572 2054 6f6c 6761 2059 ", "Muzaffer Tolga Y"),
-    ("00000020: ", "616b 6172 0a5a 6574 6120 4465 6665 6e63 ", "akar.Zeta Defenc"),
-    ("00000030: ", "6520 2f20 4b61 6469 6b6f 792c 2049 5354 ", "e / Kadikoy, IST"),
-    ("00000040: ", "0a73 7973 7465 6d73 202e 2065 6d62 6564 ", ".systems . embed"),
-    ("00000050: ", "6465 6420 2e20 7265 7665 7273 652d 656e ", "ded . reverse-en"),
-    ("00000060: ", "6769 6e65 6572 696e 6700 0000 0000 0000 ", "gineering......."),
-]
+# The banner is a real hexdump: these bytes are what the ASCII column spells
+# out. Each line below is exactly 16 bytes, one dump row. Keep it that way.
+BANNER = (
+    b"coredumpdev\x00\x00\x00\x00\x00"
+    b"Muzaffer Tolga Y"
+    b"akar\nSoftware En"
+    b"gineer @ Zeta De"
+    b"fence\nKadikoy, I"
+    b"stanbul\x00\x00\x00\x00\x00\x00\x00\x00\x00"
+)
 
 PROSE = [
-    "Systems and embedded engineer at Zeta Defence. I spend most of my",
-    "time a few layers below the framework: kernels, bare-metal MCUs,",
-    "packet paths, and the parts of a program that only make sense in",
-    "a debugger. Occasionally I surface into userland to make pixels",
-    "move fast.",
+    "Software engineer at Zeta Defence. I gravitate to the layers",
+    "below the framework: kernels, bare-metal MCUs, packet paths,",
+    "and the parts of a program that only make sense in a debugger.",
+    "Occasionally I surface into userland to make pixels move fast.",
 ]
+
+
+def hexdump(blob, cols=16, group=2):
+    """xxd -style rows of (offset, hex, ascii) — the banner's source of truth."""
+    rows = []
+    for off in range(0, len(blob), cols):
+        chunk = blob[off:off + cols]
+        hx = "".join(chunk[i:i + group].hex().ljust(group * 2) + " "
+                     for i in range(0, cols, group))
+        asc = "".join(chr(b) if 32 <= b < 127 else "." for b in chunk)
+        rows.append((f"{off:08x}: ", hx, asc))
+    return rows
 
 
 def build_session():
-    D, H = 5.0, 404
-    cmd1 = "xxd -l 112 /var/crash/coredumpdev.core"
+    cmd1 = "xxd -l %d /var/crash/coredumpdev.core" % len(BANNER)
     cmd2 = "whoami --verbose"
-    t2 = 2.45  # when the second command starts typing
+    rows = hexdump(BANNER)
+
+    # Layout flows from the content, so editing BANNER or PROSE just works.
+    y_hex = 90
+    y_cmd2 = y_hex + len(rows) * 20 + 10
+    y_prose = y_cmd2 + 26
+    y_prompt = y_prose + len(PROSE) * 20 + 12
+    H = y_prompt + 24
+
+    # Timeline: type, dump, type, speak. Each stage waits for the previous.
+    t2 = 0.95 + 0.19 * len(rows) + 0.30
+    t3 = t2 + 0.85
+    D = round(t3 + 0.20 * len(PROSE) + 0.40, 2)
 
     defs = f'''    <clipPath id="t1"><rect x="0" y="50" height="20" width="360">
       <animate attributeName="width" values="18;360" dur="0.85s" begin="0s" fill="freeze"/></rect></clipPath>
-    <clipPath id="t2"><rect x="0" y="226" height="20" width="220">
-      <animate attributeName="width" values="18;220" dur="0.7s" begin="{t2}s" fill="freeze"/></rect></clipPath>
+    <clipPath id="t2"><rect x="0" y="{y_cmd2 - 14}" height="20" width="220">
+      <animate attributeName="width" values="18;220" dur="0.7s" begin="{t2:.2f}s" fill="freeze"/></rect></clipPath>
 '''
 
     b = [chrome("coredumpdev — zsh", H)]
     b.append(f'  <g clip-path="url(#t1)"><text class="m" x="24" y="64" xml:space="preserve">'
              f'<tspan fill="{GREEN}">$ </tspan><tspan fill="{TEXT}">{esc(cmd1)}</tspan></text></g>')
 
-    for i, (off, hx, asc) in enumerate(HEX):
-        y = 90 + i * 20
-        b.append(f'  <text class="m" x="24" y="{y}" xml:space="preserve">'
+    for i, (off, hx, asc) in enumerate(rows):
+        b.append(f'  <text class="m" x="24" y="{y_hex + i * 20}" xml:space="preserve">'
                  f'<tspan fill="{MUTED}">{off}</tspan><tspan fill="{DIM}">{hx}</tspan>'
                  f'<tspan fill="{GREEN}">{esc(asc)}</tspan>{appear(0.95 + 0.19 * i, D)}</text>')
 
     # Hidden until t2 so the typing clip never flashes its base width.
     b.append(f'  <g opacity="0">{appear(t2, D, 0.01)}'
-             f'<g clip-path="url(#t2)"><text class="m" x="24" y="240" xml:space="preserve">'
+             f'<g clip-path="url(#t2)"><text class="m" x="24" y="{y_cmd2}" xml:space="preserve">'
              f'<tspan fill="{GREEN}">$ </tspan><tspan fill="{TEXT}">{esc(cmd2)}</tspan></text></g></g>')
 
     for i, line in enumerate(PROSE):
-        b.append(f'  <text class="m" x="24" y="{266 + i * 20}" fill="{SUBTLE}" xml:space="preserve">'
-                 f'{esc(line)}{appear(3.25 + 0.20 * i, D)}</text>')
+        b.append(f'  <text class="m" x="24" y="{y_prose + i * 20}" fill="{SUBTLE}" xml:space="preserve">'
+                 f'{esc(line)}{appear(t3 + 0.20 * i, D)}</text>')
 
-    b.append(f'  <text class="m" x="24" y="378" fill="{GREEN}" xml:space="preserve">$ </text>')
-    b.append(f'  <rect x="40" y="367" width="8" height="14" fill="{GREEN}">'
+    b.append(f'  <text class="m" x="24" y="{y_prompt}" fill="{GREEN}" xml:space="preserve">$ </text>')
+    b.append(f'  <rect x="40" y="{y_prompt - 11}" width="8" height="14" fill="{GREEN}">'
              f'<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.45;0.5;0.95;1" '
              f'dur="1.1s" repeatCount="indefinite"/></rect>')
 
+    spoken = BANNER.replace(b"\x00", b"").decode().replace("\n", ", ")
     write("session.svg", svg(H, "\n".join(b), defs,
-                             "Terminal: a hexdump whose ASCII column reads coredumpdev, Muzaffer Tolga "
-                             "Yakar, Zeta Defence, Kadikoy IST, systems . embedded . reverse-engineering, "
-                             "followed by a short biography."))
+                             f"Terminal: a hexdump whose ASCII column reads {spoken}. "
+                             f"Below it: {' '.join(PROSE)}"))
 
 
 # ------------------------------------------------------------------ stack
