@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="272" viewBox="0 0 840 272" role="img" aria-label="Memory map of the tech stack: text segment C, C++, Assembly, Rust; data segment TypeScript, Python, Lua, Swift; rodata Linux, STM32, MSP430, RTOS; stack Qt, React, WebGL2, Electron; vdso gdb, rizin, perf, Wireshark">
+  <defs>
+    <style>
+      .mono { font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+      .addr { fill: #6e7681; font-size: 12px; }
+      .perm { fill: #545d68; font-size: 12px; }
+      .tech { fill: #c9d1d9; font-size: 13px; }
+      .seg  { font-size: 12.5px; }
+      .hdr  { fill: #7d8590; font-size: 12px; }
+      .pr   { fill: #3fb950; font-size: 12px; }
+    </style>
+    <clipPath id="r0"><rect x="0" y="40"  height="38" width="840"><animate attributeName="width" values="0;0;840;840" keyTimes="0;0.056;0.250;1" dur="1.8s" begin="0s" fill="freeze"/></rect></clipPath>
+    <clipPath id="r1"><rect x="0" y="84"  height="38" width="840"><animate attributeName="width" values="0;0;840;840" keyTimes="0;0.156;0.350;1" dur="1.8s" begin="0s" fill="freeze"/></rect></clipPath>
+    <clipPath id="r2"><rect x="0" y="128" height="38" width="840"><animate attributeName="width" values="0;0;840;840" keyTimes="0;0.256;0.450;1" dur="1.8s" begin="0s" fill="freeze"/></rect></clipPath>
+    <clipPath id="r3"><rect x="0" y="172" height="38" width="840"><animate attributeName="width" values="0;0;840;840" keyTimes="0;0.356;0.550;1" dur="1.8s" begin="0s" fill="freeze"/></rect></clipPath>
+    <clipPath id="r4"><rect x="0" y="216" height="38" width="840"><animate attributeName="width" values="0;0;840;840" keyTimes="0;0.456;0.650;1" dur="1.8s" begin="0s" fill="freeze"/></rect></clipPath>
+  </defs>
+
+  <rect x="0.5" y="0.5" width="839" height="271" rx="10" fill="#0d1117" stroke="#30363d"/>
+  <text class="mono" x="20" y="26" xml:space="preserve"><tspan class="pr">$ </tspan><tspan class="hdr">cat /proc/self/maps</tspan></text>
+
+  <g clip-path="url(#r0)">
+    <rect x="16" y="42" width="808" height="34" rx="7" fill="#161b22"/>
+    <rect x="16" y="42" width="3.5" height="34" fill="#3fb950"/>
+    <text class="mono addr" x="34"  y="64">00400000-0040c000</text>
+    <text class="mono perm" x="176" y="64">r-xp</text>
+    <text class="mono seg"  x="224" y="64" fill="#3fb950">[ text ]</text>
+    <text class="mono tech" x="320" y="64">C · C++ · Assembly · Rust</text>
+  </g>
+
+  <g clip-path="url(#r1)">
+    <rect x="16" y="86" width="808" height="34" rx="7" fill="#161b22"/>
+    <rect x="16" y="86" width="3.5" height="34" fill="#58a6ff"/>
+    <text class="mono addr" x="34"  y="108">0060a000-00612000</text>
+    <text class="mono perm" x="176" y="108">rw-p</text>
+    <text class="mono seg"  x="224" y="108" fill="#58a6ff">[ data ]</text>
+    <text class="mono tech" x="320" y="108">TypeScript · Python · Lua · Swift</text>
+  </g>
+
+  <g clip-path="url(#r2)">
+    <rect x="16" y="130" width="808" height="34" rx="7" fill="#161b22"/>
+    <rect x="16" y="130" width="3.5" height="34" fill="#bc8cff"/>
+    <text class="mono addr" x="34"  y="152">7f0a4000-7f0a5000</text>
+    <text class="mono perm" x="176" y="152">r--p</text>
+    <text class="mono seg"  x="224" y="152" fill="#bc8cff">[rodata]</text>
+    <text class="mono tech" x="320" y="152">Linux · STM32 · MSP430 · RTOS</text>
+  </g>
+
+  <g clip-path="url(#r3)">
+    <rect x="16" y="174" width="808" height="34" rx="7" fill="#161b22"/>
+    <rect x="16" y="174" width="3.5" height="34" fill="#f0883e"/>
+    <text class="mono addr" x="34"  y="196">7ffd1000-7ffd2000</text>
+    <text class="mono perm" x="176" y="196">rw-p</text>
+    <text class="mono seg"  x="224" y="196" fill="#f0883e">[stack ]</text>
+    <text class="mono tech" x="320" y="196">Qt · React · WebGL2 · Electron</text>
+  </g>
+
+  <g clip-path="url(#r4)">
+    <rect x="16" y="218" width="808" height="34" rx="7" fill="#161b22"/>
+    <rect x="16" y="218" width="3.5" height="34" fill="#39c5cf"/>
+    <text class="mono addr" x="34"  y="240">7fff0000-7fff1000</text>
+    <text class="mono perm" x="176" y="240">r-xp</text>
+    <text class="mono seg"  x="224" y="240" fill="#39c5cf">[ vdso ]</text>
+    <text class="mono tech" x="320" y="240">gdb · rizin · perf · Wireshark</text>
+  </g>
+</svg>
